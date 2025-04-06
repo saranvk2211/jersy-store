@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="product.css">
+</head>
+<body onload="loadProductDetails()">
+    <div class="product-container">
+        <h1 id="product-title">Jersey Name</h1>
+        <img id="product-image" src="" alt="Jersey Image">
+        <div class="product-details">
+            <p id="product-price"><strong>Price:</strong></p>
+            <p id="product-size"><strong>Sizes:</strong> S, M, L, XL</p>
+            <p id="product-description"><strong>Description:</strong></p>
+            <button class="checkout-btn" onclick="location.href='checkout.html'">BUY NOW</button>
+        </div>
+        <a href="dashboard.html" class="back-link">Back to Home</a>
+    </div>
+
+    <script>
+        function loadProductDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id') || '1';
+
+            // Jersey details
+            const jerseys = [
+                { image: "jersey1.jpeg", name: "Argentina 2022", price: "$50", description: "🏆 Celebrate victory with the official Argentina 2022 World Cup Jersey! Designed with lightweight, breathable fabric and AEROREADY technology, this jersey keeps you cool and comfortable. Featuring the iconic sky blue and white stripes, embroidered AFA crest, and three championship stars, it’s a must-have for every Argentina fan!" },
+                { image: "jersey2.jpeg", name: "Manchester City 2021", price: "$55", description: "⚽ Show your Cityzens pride with the Manchester City 2021 home jersey! Crafted with dryCELL moisture-wicking fabric, this jersey ensures maximum comfort on and off the field. The sleek sky blue design and embroidered club crest reflect the team's unstoppable dominance." },
+                { image: "jersey3.jpeg", name: "Arsenal 2018", price: "$60", description: "🔴⚪ Step onto the pitch in classic Arsenal 2018 style. This retro-inspired jersey features Puma’s dryCELL technology, ensuring sweat-wicking comfort. The red body with white sleeves pays tribute to the Gunners’ legacy, while the embroidered Arsenal crest represents your passion for the club." },
+                { image: "jersey4.jpeg", name: "Manchester United 2012", price: "$65", description: "🔥 Own a piece of history with the Manchester United 2012 home jersey! This jersey features Nike’s Dri-FIT fabric, keeping you cool while cheering for the Red Devils. The traditional red design with black collar detailing represents power and passion, making it an iconic jersey for any United fan." },
+                { image: "jersey5.jpeg", name: "FC Barcelona 2015", price: "$70", description: "🔵🔴 Relive Barcelona’s 2015 treble-winning season with this classic home jersey. Featuring the legendary Blaugrana stripes, this jersey is made with lightweight fabric and Nike’s Dri-FIT technology for maximum performance. The embroidered club crest and Qatar Airways sponsor logo complete the authentic look." },
+                { image: "jersey6.jpeg", name: "Santos FC 2017", price: "$75", description: "⚪⚫ Show your love for Brazilian football with the Santos FC 2017 home jersey. This sleek white kit symbolizes grace and tradition, paying tribute to the legendary Pelé era. Designed with breathable fabric, it’s perfect for match days and casual wear." },
+                { image: "jersey7.jpeg", name: "AC Milan 2011", price: "$80", description: "🔴⚫ Wear the Rossoneri colors with pride in the AC Milan 2011 home jersey. This classic red and black striped kit features Adidas’ ClimaCool technology, providing ultimate breathability. The gold club badge celebrates Milan’s legendary dominance in football." },
+                { image: "jersey8.jpeg", name: "Real Madrid 2017", price: "$85", description: "⚪👑 Experience the glory of Real Madrid’s 2017 Champions League-winning season with this iconic jersey. Made with adidas ClimaCool technology, this white kit with royal blue accents represents elegance, class, and dominance. Hala Madrid!" },
+                { image: "jersey9.jpeg", name: "Al Nassr 2023", price: "$90", description: "💛💙 Support Cristiano Ronaldo’s new journey with the Al Nassr 2023 home jersey. The bold yellow and blue design reflects the club’s ambition, while Nike’s latest performance fabric ensures breathability and comfort. A must-have for every CR7 and Al Nassr fan!." },
+                { image: "jersey10.jpeg", name: "Juventus 2008", price: "$95", description: "⚫⚪ A classic throwback to Juventus’ 2008 season, this black-and-white striped jersey features Nike’s sweat-wicking Dri-FIT fabric. The embroidered Juve crest and sponsor logo add authenticity, making it a collector’s item for true Bianconeri fans." },
+                { image: "jersey11.jpeg", name: "PSG 2013", price: "$100", description: "🔵🔴 Experience Parisian elegance with the PSG 2013 home jersey. Featuring a navy blue base with a red vertical stripe, this kit exudes style and power. The lightweight, moisture-wicking fabric keeps you comfortable and dry, whether at the stadium or on the streets." },
+                { image: "jersey12.jpeg", name: "Atlético Madrid 2018", price: "$105", description: "🔴⚪ Show your Colchoneros spirit with the Atlético Madrid 2018 home jersey! Featuring the classic red-and-white stripes, this jersey is designed with Nike’s high-performance Dri-FIT fabric for superior comfort. The woven club crest symbolizes passion and determination." }
+            ];
+
+            const jersey = jerseys[id - 1];
+
+            if (jersey) {
+                document.getElementById('product-title').innerText = jersey.name;
+                document.getElementById('product-image').src = jersey.image;
+                document.getElementById('product-price').innerText = `Price: ${jersey.price}`;
+                document.getElementById('product-description').innerText = jersey.description;
+            } else {
+                document.getElementById('product-title').innerText = "Jersey Not Found";
+            }
+        }
+    </script>
+</body>
+</html>

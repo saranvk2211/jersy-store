@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+    <div class="checkout-container">
+        <h1>Checkout</h1>
+        <h2>Delivery Information</h2>
+        
+        <form id="checkout-form" method="POST" action="http://localhost/jersey_store/delivery.php">
+
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="street">Street Address:</label>
+                <input type="text" id="street" name="street" required>
+            </div>
+    
+            <div class="form-group">
+                <input class="half-width" type="text" id="city" name="city" placeholder="City" required>
+                <input class="half-width" type="text" id="state" name="state" placeholder="State/Province" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="zip">ZIP/Postal Code:</label>
+                <input type="text" id="zip" name="zip" required>
+            </div>
+    
+            <h2>Select Jersey Size</h2>
+            <select name="size" required>
+                <option value="">Select Size</option>
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+            </select>
+    
+            <h2>Payment Method</h2>
+            <div class="radio-container">
+                <input type="radio" name="payment" id="cod" value="COD" checked>
+                <label for="cod">Cash on Delivery (COD)</label>
+            </div>
+    
+            <button class="submit-btn">Place Order</button>
+        </form>
+    </div>    
+
+    <div id="confirmation" style="display: none;">
+        <h1>Order Confirmed! ✅</h1>
+        <p>Thank you for your purchase. Your jersey is on its way!</p>
+        <img id="order-image" src="ok.jpg" alt="Ordered Jersey" style="width: 100%; max-width: 300px; border-radius: 10px; margin-top: 15px;">
+    </div>
+    
+    <script>
+    
+        document.getElementById("checkout-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Stop normal submit
+            if (validateForm()) {
+                confirmOrder(); // Only proceed if form is valid
+            }
+        });
+    
+        function validateForm() {
+            const fullName = document.getElementById("fullName").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const street = document.getElementById("street").value.trim();
+            const zip = document.getElementById("zip").value.trim();
+    
+            const nameValid = fullName.length >= 4 && fullName.length <= 16;
+            const phoneValid = /^\d{10}$/.test(phone);
+            const streetValid = street.length >= 8 && street.length <= 30;
+            const zipValid = /^\d{5,10}$/.test(zip);
+    
+            if (!nameValid) {
+                alert("Full Name must be between 4 and 16 characters.");
+                return false;
+            }
+            if (!phoneValid) {
+                alert("Please enter a valid 10-digit phone number.");
+                return false;
+            }
+            if (!streetValid) {
+                alert("Street Address must be between 8 and 30 characters.");
+                return false;
+            }
+            if (!zipValid) {
+                alert("ZIP/Postal Code must be 5 to 10 digits.");
+                return false;
+            }
+    
+            return true;
+        }
+    
+        function confirmOrder() {
+    const form = document.getElementById("checkout-form"); // ✅ Define the form
+
+    const params = new URLSearchParams(window.location.search);
+    const jerseyId = params.get('id');
+
+    const jerseyImages = {
+        "1": "jersey1.jpeg",
+        "2": "jersey2.jpeg",
+        "3": "jersey3.jpeg",
+        "4": "jersey4.jpeg",
+        "5": "jersey5.jpeg",
+        "6": "jersey6.jpeg",
+        "7": "jersey7.jpeg",
+        "8": "jersey8.jpeg",
+        "9": "jersey9.jpeg",
+        "10": "jersey10.jpeg",
+        "11": "jersey11.jpeg",
+        "12": "jersey12.jpeg"
+    };
+
+    // Set confirmation image
+    if (jerseyId && jerseyImages[jerseyId]) {
+        document.getElementById('order-image').src = jerseyImages[jerseyId];
+    }
+
+    // Show confirmation
+    document.querySelector('.checkout-container').style.display = 'none';
+    document.getElementById('confirmation').style.display = 'block';
+
+    setTimeout(() => {
+        form.submit(); // ✅ Submit after showing confirmation
+    }, 1500); // slight delay so user sees the message
+}
+
+    </script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Jersey Store</title>
+    <link rel="stylesheet" href="login.css">
+    <script>
+        function validateLoginForm(event) {
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            const usernameValid = username.length >= 3 && username.length <= 20;
+            const passwordValid = password.length >= 6 && password.length <= 20;
+            const hasNumber = /\d/.test(password);
+            const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+            if (!usernameValid) {
+                alert("Username must be between 3 and 20 characters.");
+                event.preventDefault();
+                return;
+            }
+
+            if (!passwordValid) {
+                alert("Password must be between 6 and 20 characters.");
+                event.preventDefault();
+                return;
+            }
+
+            if (!hasNumber || !hasSpecialChar) {
+                alert("Password must contain at least one number and one special character.");
+                event.preventDefault();
+                return;
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form");
+            form.addEventListener("submit", validateLoginForm);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>AURA EXCHANGE 2.0</h1>
+        <nav>
+            <ul>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="login">
+        <div class="login-container">
+            <h2>Login</h2>
+            <!-- Updated action to PHP login checker -->
+            <form action="http://localhost/jersey_store/login.php" method="POST">
+                <div class="input-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <button type="submit">Login</button>
+            </form>
+
+            <p class="register-link">Don't have an account? <a href="register.html">Register here</a></p>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Jersey Store. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,299 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('bck.jpg') no-repeat center center/cover; /* Background image */
+    text-align: center;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+header {
+    background: rgba(0, 0, 0, 0.9); /* Darker for better readability */
+    color: rgb(200, 200, 200);
+    padding: 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff4500;
+}
+
+/* Jersey Container */
+.jersey-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.95); /* Brighter for better contrast */
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Individual Jersey Styling */
+.jersey {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    overflow: hidden;
+}
+
+.jersey:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Jersey Image */
+.jersey img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.jersey:hover img {
+    transform: scale(1.05);
+}
+
+/* Jersey Name */
+.jersey h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #222;
+    margin: 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Price Styling */
+.jersey .price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e63946; /* Red for price emphasis */
+    margin-bottom: 10px;
+}
+
+/* Footer Styling */
+footer {
+    background: #222;
+    color: rgb(180, 180, 180);
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .jersey-container {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    /* Floating Offer Popup */
+#offer-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 250px;
+    background: rgba(255, 69, 0, 0.95); /* Bright orange for visibility */
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-size: 16px;
+    z-index: 1000;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Offer Title */
+#offer-popup h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Claim Now Button */
+.claim-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px;
+    background: white;
+    color: #ff4500;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.claim-btn:hover {
+    background: #fff2e6;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Headings Styling */
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #b6aeae;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Subheadings */
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #beb7b7;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    border-bottom: 3px solid #ff4500; /* Stylish underline */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Paragraph Styling */
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #bdb5b5;
+    max-width: 800px;
+    margin: 10px auto;
+    text-align: justify;
+}
+
+/* Highlight Important Text */
+p strong {
+    color: #ff4500;
+    font-weight: bold;
+}
+
+/* Styling for the floating image */
+.floating-image {
+    position: absolute;
+    display: none;
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Show floating image when hovering over the Buy Now button */
+.button-container {
+    position: relative;
+    display: inline-block;
+}
+
+.button-container:hover .floating-image {
+    display: block;
+    opacity: 1;
+    transform: translateY(-10px);
+}
+
+/* Show floating image when hovering over the Back to Home link */
+.home-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.home-container:hover .floating-image {
+    display: block;
+    opacity: 1;
+    transform: translateY(-10px);
+}
+
+/* Buy Now Button Styling */
+.checkout-btn {
+    position: relative;
+    background-color: #ff4500;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.checkout-btn:hover {
+    background-color: #d83400;
+}
+
+/* Back to Home Link Styling */
+.back-link {
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease-in-out;
+}
+
+.back-link:hover {
+    color: #0056b3;
+}
+#searchBar {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+}
+#searchBar:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.3);
+}
+
+
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Jersey Store</title>
+    <link rel="stylesheet" href="login.css">
+    <script>
+        function validateRegisterForm(event) {
+            const fullName = document.getElementById("fullname").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            const nameValid = fullName.length >= 2 && fullName.length <= 20;
+            const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            const usernameValid = username.length >= 3 && username.length <= 20;
+            const passwordValid = password.length >= 6 && password.length <= 20;
+            const hasNumber = /\d/.test(password);
+            const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+            if (!nameValid) {
+                alert("Full Name must be between 2 and 20 characters.");
+                event.preventDefault();
+                return;
+            }
+
+            if (!emailValid) {
+                alert("Please enter a valid email address.");
+                event.preventDefault();
+                return;
+            }
+
+            if (!usernameValid) {
+                alert("Username must be between 3 and 20 characters.");
+                event.preventDefault();
+                return;
+            }
+
+            if (!passwordValid) {
+                alert("Password must be between 6 and 20 characters.");
+                event.preventDefault();
+                return;
+            }
+
+            if (!hasNumber || !hasSpecialChar) {
+                alert("Password must contain at least one number and one special character.");
+                event.preventDefault();
+                return;
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form");
+            form.addEventListener("submit", validateRegisterForm);
+        });
+    </script>
+</head>
+<body>`
+    <header>
+        <h1>AURA EXCHANGE 2.0</h1>
+        <nav>
+            <ul>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="register">
+        <div class="login-container">
+            <h2>Register</h2>
+            <!-- ✅ Form now posts to register.php -->
+            <form action="http://localhost/jersey_store/register.php" method="POST">
+                <div class="input-group">
+                    <label for="fullname">Full Name:</label>
+                    <input type="text" id="fullname" name="fullname" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <button type="submit">Register</button>
+            </form>
+
+            <p class="register-link">Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Jersey Store. All rights reserved.</p>
+    </footer>
+</body>
+</html>

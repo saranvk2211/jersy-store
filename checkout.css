@@ -1,0 +1,113 @@
+/* General Page Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('boo.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Checkout Container */
+.checkout-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Floating Effect */
+.checkout-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Form Alignment */
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Labels */
+label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+/* Input Fields */
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+/* Two Column Layout */
+.form-group .half-width {
+    width: 48%;
+}
+
+/* Payment Option Styling */
+.radio-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+/* Submit Button */
+.submit-btn {
+    background: #ff4500;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background: #d93e00;
+}
+
+/* Order Confirmation */
+#confirmation {
+    display: none;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .checkout-container {
+        width: 95%;
+    }
+
+    .form-group .half-width {
+        width: 100%;
+    }
+    
+}
